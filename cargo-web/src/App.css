@@ -1,0 +1,652 @@
+.app {
+  min-height: 100vh;
+  background-color: #f4f7f8;
+  color: #12212b;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3.5rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dde5ea;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #006157;
+}
+
+.nav-links {
+  display: none;
+  gap: 1.75rem;
+  font-size: 0.9rem;
+}
+
+.nav-links a {
+  color: #30414f;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #006157;
+}
+
+.nav-cta {
+  padding: 0.45rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid #30414f;
+  background-color: #ffffff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.nav-cta:hover {
+  background-color: #f0f4f6;
+}
+
+main {
+  padding: 2rem 1.5rem 3rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f5fafb 0%, #e7f2f4 50%, #d8e6ed 100%);
+}
+
+.hero-text {
+  max-width: 420px;
+}
+
+.hero-kicker {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #006157;
+  margin-bottom: 0.75rem;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  margin: 0 0 0.75rem;
+}
+
+.hero-body {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4c5b68;
+  margin-bottom: 1.5rem;
+}
+
+.hero-image {
+  min-height: 220px;
+  border-radius: 8px;
+  background: radial-gradient(
+    circle at 20% 20%,
+    #ffffff,
+    #d3e4f2 55%,
+    #b9d4ea 100%
+  );
+}
+
+.primary-button {
+  display: inline-block;
+  padding: 0.6rem 1.6rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #006157;
+  color: #ffffff;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background-color: #004c45;
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin: 2rem 0 2.5rem;
+}
+
+.quick-action-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.1rem;
+  border-radius: 4px;
+  border: 1px solid #dde5ea;
+  background-color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.quick-action-button:hover {
+  border-color: #006157;
+}
+
+.quick-action-icon {
+  margin-right: 0.7rem;
+  color: #006157;
+}
+
+.quick-action-label {
+  flex: 1;
+  text-align: left;
+}
+
+.quick-action-plus {
+  margin-left: 0.5rem;
+  color: #7a8a96;
+}
+
+.news {
+  margin-top: 1rem;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.news-card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card-image {
+  height: 150px;
+  background: linear-gradient(135deg, #b9d4ea, #9ac3df);
+}
+
+.news-card-content {
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.news-date {
+  font-size: 0.75rem;
+  color: #7a8a96;
+  margin-bottom: 0.5rem;
+}
+
+.news-title {
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.news-description {
+  font-size: 0.85rem;
+  color: #4c5b68;
+  margin-bottom: 0.8rem;
+}
+
+.link-button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #006157;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+.news-actions {
+  margin-top: 1.8rem;
+  text-align: center;
+}
+
+.secondary-button {
+  padding: 0.55rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid #30414f;
+  background-color: #ffffff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background-color: #f0f4f6;
+}
+
+.site-footer {
+  border-top: 1px solid #dde5ea;
+  margin-top: 3rem;
+  padding: 2.5rem 1.5rem 1.5rem;
+  background-color: #1f2d36;
+  color: #e3edf3;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 1.8rem;
+}
+
+.footer-column h4 {
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.footer-column a {
+  display: block;
+  font-size: 0.8rem;
+  color: #c7d6df;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+
+.footer-column a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  border-top: 1px solid #33424c;
+  padding-top: 0.8rem;
+}
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-separator {
+  color: #607383;
+}
+
+/* Flight status page */
+
+.flight-main {
+  padding: 2.5rem 1.5rem 3.5rem;
+}
+
+.flight-status {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.flight-title {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.flight-tabs {
+  display: flex;
+  border: 1px solid #dde5ea;
+  border-bottom: none;
+  background-color: #f8fafb;
+}
+
+.flight-tab {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-right: 1px solid #dde5ea;
+}
+
+.flight-tab:last-child {
+  border-right: none;
+}
+
+.flight-tab--active {
+  background-color: #ffffff;
+  font-weight: 600;
+}
+
+.flight-card {
+  border: 1px solid #dde5ea;
+  border-radius: 0 0 4px 4px;
+  background-color: #ffffff;
+}
+
+.flight-row {
+  display: flex;
+  flex-direction: column;
+  padding: 0.9rem 1rem;
+  border-top: 1px solid #eef2f5;
+}
+
+.flight-row:first-of-type {
+  border-top: none;
+}
+
+.flight-row--split {
+  gap: 1rem;
+}
+
+.field {
+  flex: 1;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #7a8a96;
+  margin-bottom: 0.35rem;
+}
+
+.field-input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #dde5ea;
+  outline: none;
+}
+
+.field-input:focus {
+  border-bottom-color: #006157;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.field-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  pointer-events: none;
+  color: #7a8a96;
+}
+
+.field-with-icon {
+  position: relative;
+}
+
+.field-icon {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: #7a8a96;
+}
+
+.flight-row--actions {
+  align-items: flex-end;
+}
+
+.flight-search-button {
+  padding-inline: 2.2rem;
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+
+  main {
+    padding: 2.5rem 3.5rem 3.5rem;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+    align-items: center;
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Flight status results page */
+
+.results-main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3.5rem;
+}
+
+.results-summary-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #eceff1;
+  color: #4c5b68;
+}
+
+.results-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.results-summary-icon {
+  font-size: 0.9rem;
+  color: #006157;
+}
+
+.results-summary-item {
+  display: flex;
+  align-items: center;
+}
+
+.results-summary-location {
+  font-weight: 600;
+}
+
+.results-summary-separator {
+  color: #b0bec5;
+}
+
+.results-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.results-title {
+  font-size: 1.6rem;
+  margin: 0 0 0.25rem;
+}
+
+.results-count {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #4c5b68;
+}
+
+.results-count-number {
+  color: #006157;
+  font-weight: 600;
+}
+
+.results-expand-all {
+  font-size: 0.8rem;
+}
+
+.results-list {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.results-row {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #dde5ea;
+  padding: 0.9rem 1.25rem;
+  font-size: 0.85rem;
+}
+
+.results-row-main {
+  display: flex;
+  align-items: center;
+}
+
+.results-row-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.7rem;
+  font-size: 0.75rem;
+  color: #4c5b68;
+}
+
+.results-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.results-flight-number {
+  flex: 1.5;
+}
+
+.results-departure,
+.results-arrival {
+  flex: 2.2;
+}
+
+.results-arrow {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-status {
+  flex: 1.6;
+  align-items: center;
+}
+
+.results-flight-code {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.results-time-airport {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.results-time {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #006157;
+}
+
+.results-airport-code {
+  font-size: 0.85rem;
+}
+
+.results-aircraft {
+  font-size: 0.75rem;
+  color: #7a8a96;
+}
+
+.results-meta-tag {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+  border: 1px solid #e0e6ea;
+  background-color: #f8fafb;
+  font-size: 0.7rem;
+  color: #4c5b68;
+}
+
+.results-arrow-icon {
+  font-size: 0.85rem;
+  color: #7a8a96;
+}
+
+.results-show-more {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 0.8rem;
+  color: #006157;
+  cursor: pointer;
+}
+
+.results-show-more:hover {
+  text-decoration: underline;
+}
+
+.status-text {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-text--notyet {
+  color: #006157;
+}
+
+.status-text--cancelled {
+  color: #c62828;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+  background-color: currentColor;
+}
