@@ -3,19 +3,19 @@ import '../../App.css';
 const newsItems = [
     {
         date: '25 November 2025',
-        title: 'CargoAir releases traffic figures for October 2025',
+        title: 'Cargo releases traffic figures for October 2025',
         description:
             'Latest monthly performance update and network highlights for our cargo operations.',
     },
     {
         date: '09 November 2025',
-        title: 'CargoAir transports priceless museum collection',
+        title: 'Cargo transports priceless museum collection',
         description:
             'Special handling for sensitive artefacts showcasing our end-to-end logistics expertise.',
     },
     {
         date: '24 October 2025',
-        title: 'CargoAir expands its global freighter network',
+        title: 'Cargo expands its global freighter network',
         description:
             'Additional routes strengthen connectivity across key trade lanes worldwide.',
     },
@@ -25,7 +25,7 @@ function CargoNewsGallery() {
     return (
         <section className="news" aria-labelledby="news-heading">
             <h2 id="news-heading" className="section-title">
-                CargoAir news
+                Cargo news
             </h2>
             <div className="news-grid">
                 {newsItems.map((item) => (

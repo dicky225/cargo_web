@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import '../../../App.css';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
@@ -7,16 +7,22 @@ import CheckFlightStatusPanel from './CheckFlightStatusCriteriaPanel';
 import SearchByFlightNum from './SearchByFlightNum';
 import SearchByAirport from './SearchByAirport';
 import SearchByRoute from './SearchByRoute';
-import sampleFlightResults from '../../../sampleData/flightStatusSample';
 import {
     setSearchResults,
     setSearchLoading,
     setSearchError,
+    clearLastSearchCriteria,
 } from '../../../store/flightStatusSlice';
 
 function CheckFlightStatusPage({ onNavigate }) {
     const dispatch = useDispatch();
-    const [activeTab, setActiveTab] = useState('flight-number');
+    const { lastSearchMode } = useSelector((state) => state.flightStatus);
+    const [activeTab, setActiveTab] = useState(lastSearchMode || 'flight-number');
+
+    // Clear last search criteria when tab changes
+    useEffect(() => {
+        dispatch(clearLastSearchCriteria());
+    }, [activeTab, dispatch]);
 
     const handleSearch = async (event) => {
         event.preventDefault();
@@ -24,24 +30,28 @@ function CheckFlightStatusPage({ onNavigate }) {
         const formData = new FormData(event.target);
 
         let payload;
+        let url;
+
         if (activeTab === 'airport') {
+            url = 'http://localhost:8080/flight/v1/flight-statuses/search-by-airport'
             payload = {
-                mode: 'airport',
-                airport: formData.get('airport') || '',
+                airportCode: formData.get('airport') || '',
                 status: formData.get('status') || '',
                 date: formData.get('date') || '',
             };
         } else if (activeTab === 'route') {
+            url = 'http://localhost:8080/flight/v1/flight-statuses/search-by-route'
+            const origin = formData.get('origin') || '';
+            const destination = formData.get('destination') || '';
             payload = {
-                mode: 'route',
-                origin: formData.get('origin') || '',
-                destination: formData.get('destination') || '',
+                originAirportCode: origin,
+                destinationAirportCode: destination,
                 date: formData.get('date') || '',
             };
         } else {
+            url = 'http://localhost:8080/flight/v1/flight-statuses/search-by-flight-num'
             payload = {
-                mode: 'flight-number',
-                flightNumber: formData.get('flightNumber') || '',
+                flightNum: formData.get('flightNumber') || '',
                 status: formData.get('status') || '',
                 date: formData.get('date') || '',
             };
@@ -55,7 +65,7 @@ function CheckFlightStatusPage({ onNavigate }) {
                 onNavigate('check-flight-status-result');
             }
 
-            const response = await fetch('http://localhost:8080/search', {
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,22 +85,12 @@ function CheckFlightStatusPage({ onNavigate }) {
                 setSearchResults({
                     criteria: payload,
                     results: resultsArray,
+                    mode: activeTab,
                 }),
             );
             dispatch(setSearchLoading(false));
         } catch (err) {
-            // Fallback to local sample data when the API call fails,
-            // so the results page can still render and be tested.
-            // You can remove this block when the backend is stable.
-            console.error('Search failed, using sample data instead:', err);
-
-            dispatch(
-                setSearchResults({
-                    criteria: payload,
-                    results: sampleFlightResults,
-                }),
-            );
-            dispatch(setSearchError(null));
+            dispatch(setSearchError(err.message));
             dispatch(setSearchLoading(false));
         }
     };

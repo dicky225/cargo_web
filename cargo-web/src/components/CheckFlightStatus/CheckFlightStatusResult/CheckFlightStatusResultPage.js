@@ -3,7 +3,6 @@ import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 import { useSelector } from 'react-redux';
 import FlightStatusResultBox from './FlightStatusResultBox';
-import sampleFlightResults from '../../../sampleData/flightStatusSample';
 
 function CheckFlightStatusResultPage({ onNavigate }) {
     const { criteria, results, isLoading, error } = useSelector(
@@ -98,22 +97,6 @@ function CheckFlightStatusResultPage({ onNavigate }) {
 
                 {!isLoading && error && (
                     <p className="flight-results flight-results--error">{error}</p>
-                )}
-
-                {!isLoading && !error && !hasResults && (
-                    <section className="results-list" aria-label="Flight status results (sample)">
-                        {sampleFlightResults.map((flight) => {
-                            const flightNumber = `${flight.carrierCode || ''}${flight.flightNo || ''}`;
-                            const key = `${flightNumber}-${flight.STD || flight.flightDate || flight.departureTime || flight.arrivalTime || Math.random()}`;
-
-                            return (
-                                <FlightStatusResultBox
-                                    key={key}
-                                    flight={flight}
-                                />
-                            );
-                        })}
-                    </section>
                 )}
 
                 {!isLoading && !error && hasResults && (

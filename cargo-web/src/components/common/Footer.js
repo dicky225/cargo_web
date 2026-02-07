@@ -6,7 +6,7 @@ function Footer() {
             <div className="footer-columns">
                 <div className="footer-column">
                     <h4>About us</h4>
-                    <a href="#about">About CargoAir</a>
+                    <a href="#about">About Cargo</a>
                     <a href="#careers">Careers</a>
                     <a href="#investors">Investor relations</a>
                 </div>
@@ -29,7 +29,7 @@ function Footer() {
             </div>
             <div className="footer-bottom">
                 <div className="footer-copy">
-                    © {new Date().getFullYear()} CargoAir Logistics Ltd. All rights reserved.
+                    © {new Date().getFullYear()} Cargo Logistics Ltd. All rights reserved.
                 </div>
                 <div className="footer-meta">
                     <button className="link-button">English</button>

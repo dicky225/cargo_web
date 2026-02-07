@@ -11,6 +11,15 @@ function humanStatus(flightStatus, cancelled) {
     return flightStatus.replace(/_/g, ' ');
 }
 
+function formatAircraftCategory(category) {
+    if (!category) return '';
+    // Convert WIDE_BODY to Wide Body, NARROW_BODY to Narrow Body, etc.
+    return category
+        .split('_')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+}
+
 function FlightStatusResultBox({ flight }) {
     if (!flight) return null;
 
@@ -29,7 +38,7 @@ function FlightStatusResultBox({ flight }) {
                 <div className="results-cell results-departure">
                     <div className="results-time-airport">
                         <span className="results-time">{formatTime(flight.departureTime)}</span>
-                        <span className="results-airport-code">{flight.origin}</span>
+                        <span className="results-airport-code">{flight.originAirportCode}</span>
                     </div>
                     <div className="results-meta-tag">Scheduled</div>
                 </div>
@@ -41,7 +50,7 @@ function FlightStatusResultBox({ flight }) {
                 <div className="results-cell results-arrival">
                     <div className="results-time-airport">
                         <span className="results-time">{formatTime(flight.arrivalTime)}</span>
-                        <span className="results-airport-code">{flight.destination}</span>
+                        <span className="results-airport-code">{flight.destinationAirportCode}</span>
                     </div>
                     <div className="results-meta-tag">Scheduled</div>
                 </div>
@@ -56,7 +65,7 @@ function FlightStatusResultBox({ flight }) {
 
             <div className="results-row-footer">
                 <div className="results-aircraft">
-                    {flight.aircraftCatg}
+                    {formatAircraftCategory(flight.aircraftCategory)}
                     {flight.aircraftType && `, ${flight.aircraftType}`}
                 </div>
                 <button type="button" className="results-show-more">Show more</button>

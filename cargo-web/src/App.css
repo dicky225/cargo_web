@@ -300,6 +300,16 @@ main {
   margin: 0 auto;
 }
 
+.form-error-message {
+  background-color: #ffebee;
+  border-left: 4px solid #c62828;
+  color: #c62828;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+  font-size: 0.9rem;
+}
+
 .flight-title {
   font-size: 1.6rem;
   margin-bottom: 1.2rem;
@@ -411,6 +421,29 @@ main {
   transform: translateY(-50%);
   font-size: 0.85rem;
   color: #7a8a96;
+}
+
+.field-clear-button {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  border: none;
+  background: none;
+  color: #7a8a96;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.field-clear-button:hover {
+  color: #30414f;
+}
+
+.field-with-icon .field-input,
+.select-wrapper .field-select {
+  padding-right: 2rem;
 }
 
 .flight-row--actions {

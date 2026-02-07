@@ -1,5 +1,11 @@
+import { useSelector } from 'react-redux';
+
 function SearchByRoute() {
-    const today = new Date().toISOString().slice(0, 10);
+    const { lastSearchCriteria } = useSelector((state) => state.flightStatus);
+
+    const defaultOrigin = lastSearchCriteria?.originAirportCode || '';
+    const defaultDestination = lastSearchCriteria?.destinationAirportCode || '';
+    const defaultDate = lastSearchCriteria?.date || '2025-12-15';
 
     return (
         <>
@@ -14,6 +20,8 @@ function SearchByRoute() {
                         type="text"
                         className="field-input"
                         placeholder="From (airport code)"
+                        defaultValue={defaultOrigin}
+                        required
                     />
                 </div>
 
@@ -27,6 +35,8 @@ function SearchByRoute() {
                         type="text"
                         className="field-input"
                         placeholder="To (airport code)"
+                        defaultValue={defaultDestination}
+                        required
                     />
                 </div>
             </div>
@@ -36,18 +46,13 @@ function SearchByRoute() {
                     <label className="field-label" htmlFor="route-date">
                         Date
                     </label>
-                    <div className="field-with-icon">
-                        <input
-                            id="route-date"
-                            name="date"
-                            type="date"
-                            className="field-input"
-                            defaultValue={today}
-                        />
-                        <span className="field-icon" aria-hidden="true">
-                            📅
-                        </span>
-                    </div>
+                    <input
+                        id="route-date"
+                        name="date"
+                        type="date"
+                        className="field-input"
+                        defaultValue={defaultDate}
+                    />
                 </div>
             </div>
         </>

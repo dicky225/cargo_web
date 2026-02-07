@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import '../../../App.css';
 
 const tabs = [
@@ -7,6 +8,14 @@ const tabs = [
 ];
 
 function CheckFlightStatusPanel({ activeTab, onTabChange, onSearch, children }) {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (onSearch) {
+            onSearch(event);
+        }
+    };
+
     return (
         <section className="flight-status" aria-labelledby="flight-status-heading">
             <h1 id="flight-status-heading" className="flight-title">
@@ -34,13 +43,7 @@ function CheckFlightStatusPanel({ activeTab, onTabChange, onSearch, children }) 
 
             <form
                 className="flight-card"
-                onSubmit={(event) => {
-                    if (onSearch) {
-                        onSearch(event);
-                    } else {
-                        event.preventDefault();
-                    }
-                }}
+                onSubmit={handleSubmit}
             >
                 {children}
 

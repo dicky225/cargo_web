@@ -5,6 +5,8 @@ const initialState = {
     results: [],
     isLoading: false,
     error: null,
+    lastSearchCriteria: null,
+    lastSearchMode: 'flight-number',
 };
 
 const flightStatusSlice = createSlice({
@@ -14,6 +16,8 @@ const flightStatusSlice = createSlice({
         setSearchResults(state, action) {
             state.criteria = action.payload.criteria || null;
             state.results = action.payload.results || [];
+            state.lastSearchCriteria = action.payload.criteria || null;
+            state.lastSearchMode = action.payload.mode || 'flight-number';
         },
         setSearchLoading(state, action) {
             state.isLoading = Boolean(action.payload);
@@ -27,10 +31,14 @@ const flightStatusSlice = createSlice({
             state.isLoading = false;
             state.error = null;
         },
+        clearLastSearchCriteria(state) {
+            state.lastSearchCriteria = null;
+            state.lastSearchMode = 'flight-number';
+        },
     },
 });
 
-export const { setSearchResults, setSearchLoading, setSearchError, clearSearchResults } =
+export const { setSearchResults, setSearchLoading, setSearchError, clearSearchResults, clearLastSearchCriteria } =
     flightStatusSlice.actions;
 
 export default flightStatusSlice.reducer;

@@ -1,5 +1,11 @@
+import { useSelector } from 'react-redux';
+
 function SearchByFlightNum() {
-    const today = new Date().toISOString().slice(0, 10);
+    const { lastSearchCriteria } = useSelector((state) => state.flightStatus);
+
+    const defaultFlightNumber = lastSearchCriteria?.flightNumber || '';
+    const defaultStatus = lastSearchCriteria?.status || 'Not_yet_departed';
+    const defaultDate = lastSearchCriteria?.date || '2025-12-15';
 
     return (
         <>
@@ -14,6 +20,8 @@ function SearchByFlightNum() {
                         type="text"
                         className="field-input"
                         placeholder="Enter your flight number"
+                        defaultValue={defaultFlightNumber}
+                        required
                     />
                 </div>
             </div>
@@ -24,9 +32,11 @@ function SearchByFlightNum() {
                         Status
                     </label>
                     <div className="select-wrapper">
-                        <select id="status" className="field-input field-select">
-                            <option>Departing</option>
-                            <option>Arriving</option>
+                        <select id="status" name="status" className="field-input field-select" defaultValue={defaultStatus}>
+                            <option value="Not_yet_departed">Not yet departed</option>
+                            <option value="Departed">Departed</option>
+                            <option value="Arrived">Arrived</option>
+                            <option value="Cancelled">Cancelled</option>
                         </select>
                         <span className="select-arrow">▾</span>
                     </div>
@@ -36,18 +46,13 @@ function SearchByFlightNum() {
                     <label className="field-label" htmlFor="date">
                         Date
                     </label>
-                    <div className="field-with-icon">
-                        <input
-                            id="date"
-                            name="date"
-                            type="date"
-                            className="field-input"
-                            defaultValue={today}
-                        />
-                        <span className="field-icon" aria-hidden="true">
-                            📅
-                        </span>
-                    </div>
+                    <input
+                        id="date"
+                        name="date"
+                        type="date"
+                        className="field-input"
+                        defaultValue={defaultDate}
+                    />
                 </div>
             </div>
         </>
