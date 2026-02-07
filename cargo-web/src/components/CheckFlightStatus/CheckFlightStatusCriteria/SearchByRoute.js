@@ -1,11 +1,20 @@
 import { useSelector } from 'react-redux';
+import { useRef } from 'react';
 
 function SearchByRoute() {
     const { lastSearchCriteria } = useSelector((state) => state.flightStatus);
+    const dateRef = useRef(null);
 
     const defaultOrigin = lastSearchCriteria?.originAirportCode || '';
     const defaultDestination = lastSearchCriteria?.destinationAirportCode || '';
     const defaultDate = lastSearchCriteria?.date || '2025-12-15';
+
+    const handleClearField = (ref) => {
+        if (ref.current) {
+            ref.current.value = '';
+            ref.current.focus();
+        }
+    };
 
     return (
         <>
@@ -46,13 +55,24 @@ function SearchByRoute() {
                     <label className="field-label" htmlFor="route-date">
                         Date
                     </label>
-                    <input
-                        id="route-date"
-                        name="date"
-                        type="date"
-                        className="field-input"
-                        defaultValue={defaultDate}
-                    />
+                    <div className="field-with-icon">
+                        <input
+                            ref={dateRef}
+                            id="route-date"
+                            name="date"
+                            type="date"
+                            className="field-input"
+                            defaultValue={defaultDate}
+                        />
+                        <button
+                            type="button"
+                            className="field-clear-button"
+                            onClick={() => handleClearField(dateRef)}
+                            aria-label="Clear date"
+                        >
+                            ✕
+                        </button>
+                    </div>
                 </div>
             </div>
         </>

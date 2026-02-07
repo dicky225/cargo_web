@@ -1,11 +1,21 @@
 import { useSelector } from 'react-redux';
+import { useRef } from 'react';
 
 function SearchByAirport() {
     const { lastSearchCriteria } = useSelector((state) => state.flightStatus);
+    const statusRef = useRef(null);
+    const dateRef = useRef(null);
 
     const defaultAirport = lastSearchCriteria?.airport || '';
     const defaultStatus = lastSearchCriteria?.status || 'Not_yet_departed';
     const defaultDate = lastSearchCriteria?.date || '2025-12-15';
+
+    const handleClearField = (ref) => {
+        if (ref.current) {
+            ref.current.value = '';
+            ref.current.focus();
+        }
+    };
 
     return (
         <>
@@ -33,6 +43,7 @@ function SearchByAirport() {
                     </label>
                     <div className="select-wrapper">
                         <select
+                            ref={statusRef}
                             id="airport-status"
                             name="status"
                             className="field-input field-select"
@@ -44,6 +55,14 @@ function SearchByAirport() {
                             <option value="Cancelled">Cancelled</option>
                         </select>
                         <span className="select-arrow">▾</span>
+                        <button
+                            type="button"
+                            className="field-clear-button"
+                            onClick={() => handleClearField(statusRef)}
+                            aria-label="Clear status"
+                        >
+                            ✕
+                        </button>
                     </div>
                 </div>
 
@@ -51,13 +70,24 @@ function SearchByAirport() {
                     <label className="field-label" htmlFor="airport-date">
                         Date
                     </label>
-                    <input
-                        id="airport-date"
-                        name="date"
-                        type="date"
-                        className="field-input"
-                        defaultValue={defaultDate}
-                    />
+                    <div className="field-with-icon">
+                        <input
+                            ref={dateRef}
+                            id="airport-date"
+                            name="date"
+                            type="date"
+                            className="field-input"
+                            defaultValue={defaultDate}
+                        />
+                        <button
+                            type="button"
+                            className="field-clear-button"
+                            onClick={() => handleClearField(dateRef)}
+                            aria-label="Clear date"
+                        >
+                            ✕
+                        </button>
+                    </div>
                 </div>
             </div>
         </>
